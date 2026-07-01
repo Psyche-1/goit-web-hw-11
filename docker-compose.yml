@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: fastapi_postgres_container
+    environment:
+      POSTGRES_USER: my_api_user
+      POSTGRES_PASSWORD: my_secure_password
+      POSTGRES_DB: contacts_db
+      POSTGRES_HOST_AUTH_METHOD: trust # Залишаємо режим довіри
+    ports:
+      - "5445:5432" # Новий випадковий порт
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
